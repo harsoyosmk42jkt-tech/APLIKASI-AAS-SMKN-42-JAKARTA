@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ujian SMK - Soal Pilihan Ganda A-E</title>
+<title>Ujian SMK N 42 Jakarta</title>
 <style>
   * {
     box-sizing: border-box;
@@ -13,7 +13,7 @@
   }
 
   body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #0056b3 0%, #003380 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,15 +26,105 @@
     width: 100%;
     max-width: 820px;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     overflow: hidden;
+    display: none; /* Disembunyikan awalnya */
   }
 
-  /* ===== HEADER ===== */
+  .container.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HALAMAN LOGIN ===== */
+  #loginPage {
+    display: block;
+    max-width: 500px;
+  }
+
+  .login-header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    background: #f8f9fa;
+    border-bottom: 3px solid #0056b3;
+  }
+
+  .login-header img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .login-header h2 {
+    color: #0056b3;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .login-header p {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .login-form {
+    padding: 25px 30px 35px;
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+  }
+
+  .input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+  }
+
+  .btn-login {
+    width: 100%;
+    padding: 14px;
+    background: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+
+  .btn-login:hover {
+    background: #004494;
+  }
+
+  /* ===== HALAMAN UJIAN ===== */
   .header {
     background: #f8f9fa;
     padding: 20px 25px;
-    border-bottom: 3px solid #1e3c72;
+    border-bottom: 3px solid #0056b3;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -42,20 +132,13 @@
   }
 
   .logo-box {
-    width: 75px;
-    height: 75px;
-    background: #1e3c72;
-    border-radius: 12px;
+    width: 85px;
+    height: 85px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
     flex-shrink: 0;
-    overflow: hidden;
-    border: 2px solid #2a5298;
+    margin: 0 auto; /* Center logo di mobile */
   }
 
   .logo-box img {
@@ -67,27 +150,27 @@
   .identitas {
     flex: 1;
     min-width: 250px;
+    margin-top: 10px;
   }
 
   .identitas .row {
     display: flex;
-    margin-bottom: 5px;
-    font-size: 14px;
+    margin-bottom: 6px;
+    font-size: 15px;
   }
 
   .identitas .row .label {
-    width: 110px;
+    width: 120px;
     font-weight: 600;
     color: #555;
   }
 
   .identitas .row .value {
-    color: #1e3c72;
-    font-weight: 600;
+    color: #0056b3;
+    font-weight: 700;
     flex: 1;
   }
 
-  /* ===== KONTEN SOAL ===== */
   .content {
     padding: 28px 25px;
   }
@@ -104,7 +187,7 @@
   }
 
   .info-bar .soal-ke {
-    background: #1e3c72;
+    background: #0056b3;
     color: #fff;
     padding: 6px 18px;
     border-radius: 20px;
@@ -146,7 +229,6 @@
     display: none;
   }
 
-  /* ===== OPSI A-E ===== */
   .opsi {
     display: flex;
     flex-direction: column;
@@ -168,12 +250,12 @@
   }
 
   .opsi label:hover {
-    border-color: #1e3c72;
-    background: #f5f8ff;
+    border-color: #0056b3;
+    background: #f0f7ff;
   }
 
   .opsi input[type="radio"] {
-    accent-color: #1e3c72;
+    accent-color: #0056b3;
     width: 18px;
     height: 18px;
     margin-top: 3px;
@@ -181,9 +263,9 @@
   }
 
   .opsi label.selected {
-    border-color: #1e3c72;
-    background: #e8f0fe;
-    box-shadow: 0 2px 8px rgba(30,60,114,0.18);
+    border-color: #0056b3;
+    background: #e6f0fa;
+    box-shadow: 0 2px 8px rgba(0,86,179,0.18);
   }
 
   .opsi .kode-opsi {
@@ -201,11 +283,10 @@
   }
 
   .opsi label.selected .kode-opsi {
-    background: #1e3c72;
+    background: #0056b3;
     color: #fff;
   }
 
-  /* ===== UPLOAD ===== */
   .upload-section {
     margin-top: 22px;
     padding: 14px 16px;
@@ -232,7 +313,6 @@
     margin-top: 6px;
   }
 
-  /* ===== NAVIGASI ===== */
   .nav-buttons {
     display: flex;
     justify-content: space-between;
@@ -265,12 +345,12 @@
   }
 
   .btn-next {
-    background: #1e3c72;
+    background: #0056b3;
     color: #fff;
   }
 
   .btn-next:hover:not(:disabled) {
-    background: #2a5298;
+    background: #004494;
   }
 
   .btn-submit {
@@ -287,7 +367,6 @@
     cursor: not-allowed;
   }
 
-  /* ===== PROGRESS DOTS ===== */
   .progress-dots {
     display: flex;
     gap: 6px;
@@ -304,10 +383,9 @@
     background: #d0d7de;
   }
 
-  .dot.aktif { background: #1e3c72; transform: scale(1.25); }
+  .dot.aktif { background: #0056b3; transform: scale(1.25); }
   .dot.terjawab { background: #27ae60; }
 
-  /* ===== HASIL ===== */
   .hasil-box {
     display: none;
     padding: 40px 25px;
@@ -317,7 +395,7 @@
   .hasil-box .skor-besar {
     font-size: 68px;
     font-weight: 800;
-    color: #1e3c72;
+    color: #0056b3;
     margin: 10px 0;
     line-height: 1;
   }
@@ -341,7 +419,7 @@
 
   .hasil-box .detail span {
     font-weight: 700;
-    color: #1e3c72;
+    color: #0056b3;
     float: right;
   }
 
@@ -362,7 +440,7 @@
   .btn-restart {
     margin-top: 20px;
     padding: 12px 35px;
-    background: #1e3c72;
+    background: #0056b3;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -371,11 +449,12 @@
     cursor: pointer;
   }
 
-  .btn-restart:hover { background: #2a5298; }
+  .btn-restart:hover { background: #004494; }
 
-  @media (max-width: 500px) {
-    .header { flex-direction: column; align-items: flex-start; }
-    .identitas .row .label { width: 90px; font-size: 13px; }
+  @media (max-width: 600px) {
+    .header { flex-direction: column; align-items: center; text-align: center; }
+    .identitas { width: 100%; text-align: left; }
+    .identitas .row .label { width: 100px; font-size: 13px; }
     .nav-buttons button { padding: 12px 12px; font-size: 14px; }
     .soal-teks { font-size: 16px; }
   }
@@ -383,37 +462,61 @@
 </head>
 <body>
 
-<div class="container">
-  <!-- ============ HEADER ============ -->
+<!-- ================= HALAMAN LOGIN ================= -->
+<div class="container active" id="loginPage">
+  <div class="login-header">
+    <!-- Ganti URL di bawah ini dengan link gambar logo Anda jika berbeda -->
+    <img src="https://i.ibb.co.com/6cZ4Y7Z/logo-smk.png" alt="Logo SMK N 42 Jakarta" onerror="this.src='https://via.placeholder.com/120x120?text=LOGO+SMK'">
+    <h2>SMK Negeri 42 Jakarta</h2>
+    <p>Sistem Ujian Online</p>
+  </div>
+  <div class="login-form">
+    <div class="input-group">
+      <label>Nama Siswa</label>
+      <input type="text" id="inNama" placeholder="Masukkan nama lengkap" required>
+    </div>
+    <div class="input-group">
+      <label>NISN</label>
+      <input type="text" id="inNisn" placeholder="Masukkan NISN" required>
+    </div>
+    <div class="input-group">
+      <label>Nama Sekolah</label>
+      <input type="text" id="inSekolah" placeholder="Masukkan nama sekolah" value="SMK Negeri 42 Jakarta" required>
+    </div>
+    <div class="input-group">
+      <label>Password Ujian</label>
+      <input type="password" id="inPassword" placeholder="Masukkan password (123456)" required>
+    </div>
+    <button class="btn-login" onclick="prosesLogin()">Masuk Ujian</button>
+  </div>
+</div>
+
+<!-- ================= HALAMAN UJIAN ================= -->
+<div class="container" id="ujianPage">
+  <!-- HEADER -->
   <div class="header">
-    <div class="logo-box" id="logoBox">
-      LOGO<br>SMK
+    <div class="logo-box">
+      <img src="https://i.ibb.co.com/6cZ4Y7Z/logo-smk.png" alt="Logo" onerror="this.src='https://via.placeholder.com/85x85?text=LOGO'">
     </div>
     <div class="identitas">
-      <div class="row"><span class="label">Nama Siswa</span><span class="value">: Andi Pratama</span></div>
-      <div class="row"><span class="label">NISN</span><span class="value">: 0071234567</span></div>
-      <div class="row"><span class="label">Nama Sekolah</span><span class="value">: SMK Negeri 1 Jakarta</span></div>
+      <div class="row"><span class="label">Nama Siswa</span><span class="value" id="dispNama">: -</span></div>
+      <div class="row"><span class="label">NISN</span><span class="value" id="dispNisn">: -</span></div>
+      <div class="row"><span class="label">Nama Sekolah</span><span class="value" id="dispSekolah">: -</span></div>
     </div>
   </div>
 
-  <!-- ============ AREA SOAL ============ -->
+  <!-- AREA SOAL -->
   <div id="areaSoal">
     <div class="content">
       <div class="info-bar">
         <span class="soal-ke" id="labelSoal">Soal 1 / 5</span>
         <span class="terjawab" id="labelTerjawab">Terjawab: 0</span>
       </div>
-
-      <div class="perintah" id="perintahSoal">
-        Perintah: Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).
-      </div>
-
+      <div class="perintah" id="perintahSoal">Perintah: Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).</div>
       <div class="soal-teks" id="teksSoal"></div>
-
       <img id="gambarSoal" class="soal-gambar" alt="Gambar Soal">
-
       <div class="opsi" id="opsiContainer"></div>
-
+      
       <div class="upload-section">
         <h4>📎 Upload soal (screenshot / gambar) — opsional</h4>
         <input type="file" id="uploadSoal" accept="image/*">
@@ -426,11 +529,10 @@
       <button class="btn-next" id="btnNext">Selanjutnya ›</button>
       <button class="btn-submit" id="btnSubmit" style="display:none;">✅ Submit & Lihat Nilai</button>
     </div>
-
     <div class="progress-dots" id="progressDots"></div>
   </div>
 
-  <!-- ============ AREA HASIL ============ -->
+  <!-- AREA HASIL -->
   <div class="hasil-box" id="areaHasil">
     <div class="skor-label">NILAI AKHIR ANDA</div>
     <div class="skor-besar" id="skorAkhir">0</div>
@@ -441,13 +543,13 @@
       <div>Jawaban Salah <span id="jumlahSalah">0</span></div>
       <div>Tidak Dijawab <span id="jumlahKosong">0</span></div>
     </div>
-    <button class="btn-restart" id="btnRestart">🔄 Ulangi Ujian</button>
+    <button class="btn-restart" onclick="ulangiUjian()">🔄 Ulangi Ujian</button>
   </div>
 </div>
 
 <script>
 /* =========================================================
-   DATA SOAL (5 OPSI A-E)
+   DATA SOAL
    ========================================================= */
 const HURUF = ['A', 'B', 'C', 'D', 'E'];
 
@@ -456,65 +558,35 @@ const soalData = [
     perintah: "Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).",
     teks: "1. Perangkat keras komputer yang berfungsi sebagai otak pemrosesan utama adalah...",
     gambar: "",
-    opsi: [
-      "Monitor",
-      "CPU (Processor)",
-      "Keyboard",
-      "Printer",
-      "Speaker"
-    ],
+    opsi: ["Monitor", "CPU (Processor)", "Keyboard", "Printer", "Speaker"],
     jawaban: 1
   },
   {
     perintah: "Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).",
     teks: "2. Bahasa pemrograman yang paling banyak digunakan untuk membangun website dinamis adalah...",
     gambar: "",
-    opsi: [
-      "Pascal",
-      "Assembly",
-      "PHP & JavaScript",
-      "Fortran",
-      "COBOL"
-    ],
+    opsi: ["Pascal", "Assembly", "PHP & JavaScript", "Fortran", "COBOL"],
     jawaban: 2
   },
   {
     perintah: "Perhatikan pernyataan berikut, pilih jawaban yang benar.",
     teks: "3. Rumus kimia untuk air adalah...",
     gambar: "",
-    opsi: [
-      "CO₂",
-      "O₂",
-      "NaCl",
-      "H₂O",
-      "CH₄"
-    ],
+    opsi: ["CO₂", "O₂", "NaCl", "H₂O", "CH₄"],
     jawaban: 3
   },
   {
     perintah: "Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).",
     teks: "4. Alat ukur yang digunakan untuk mengukur besarnya arus listrik adalah...",
     gambar: "",
-    opsi: [
-      "Voltmeter",
-      "Ohmmeter",
-      "Barometer",
-      "Higrometer",
-      "Amperemeter"
-    ],
+    opsi: ["Voltmeter", "Ohmmeter", "Barometer", "Higrometer", "Amperemeter"],
     jawaban: 4
   },
   {
     perintah: "Pilihlah salah satu jawaban yang paling benar (A, B, C, D, atau E).",
     teks: "5. Dalam jaringan komputer, perangkat yang berfungsi mengarahkan paket data antar jaringan yang berbeda disebut...",
     gambar: "",
-    opsi: [
-      "Switch",
-      "Router",
-      "Hub",
-      "Repeater",
-      "Bridge"
-    ],
+    opsi: ["Switch", "Router", "Hub", "Repeater", "Bridge"],
     jawaban: 1
   }
 ];
@@ -526,7 +598,39 @@ let currentIndex = 0;
 let jawabanUser = new Array(soalData.length).fill(null);
 
 /* =========================================================
-   ELEMEN
+   FUNGSI LOGIN
+   ========================================================= */
+function prosesLogin() {
+  const nama = document.getElementById('inNama').value.trim();
+  const nisn = document.getElementById('inNisn').value.trim();
+  const sekolah = document.getElementById('inSekolah').value.trim();
+  const pass = document.getElementById('inPassword').value;
+
+  if (!nama || !nisn || !sekolah || !pass) {
+    alert("Mohon lengkapi semua data terlebih dahulu!");
+    return;
+  }
+
+  if (pass !== "123456") {
+    alert("Password salah! Silakan coba lagi.");
+    return;
+  }
+
+  // Tampilkan data di header ujian
+  document.getElementById('dispNama').textContent = ": " + nama;
+  document.getElementById('dispNisn').textContent = ": " + nisn;
+  document.getElementById('dispSekolah').textContent = ": " + sekolah;
+
+  // Pindah halaman
+  document.getElementById('loginPage').classList.remove('active');
+  document.getElementById('ujianPage').classList.add('active');
+
+  // Mulai render soal
+  renderSoal();
+}
+
+/* =========================================================
+   FUNGSI UJIAN
    ========================================================= */
 const teksSoalEl = document.getElementById('teksSoal');
 const gambarSoalEl = document.getElementById('gambarSoal');
@@ -540,21 +644,15 @@ const btnSubmit = document.getElementById('btnSubmit');
 const progressDots = document.getElementById('progressDots');
 const uploadSoal = document.getElementById('uploadSoal');
 
-/* =========================================================
-   RENDER SOAL
-   ========================================================= */
 function renderSoal() {
   const soal = soalData[currentIndex];
 
-  // Label & perintah
   labelSoalEl.textContent = `Soal ${currentIndex + 1} / ${soalData.length}`;
   perintahSoalEl.textContent = "Perintah: " + soal.perintah;
   updateTerjawab();
 
-  // Teks soal
   teksSoalEl.textContent = soal.teks;
 
-  // Gambar bawaan soal
   if (soal.gambar) {
     gambarSoalEl.src = soal.gambar;
     gambarSoalEl.style.display = 'block';
@@ -563,10 +661,8 @@ function renderSoal() {
     gambarSoalEl.removeAttribute('src');
   }
 
-  // Reset input upload karena pindah soal
   uploadSoal.value = '';
 
-  // Render opsi A-E
   opsiContainer.innerHTML = '';
   soal.opsi.forEach((opsiTeks, idx) => {
     const label = document.createElement('label');
@@ -600,7 +696,6 @@ function renderSoal() {
     opsiContainer.appendChild(label);
   });
 
-  // Tombol navigasi
   btnPrev.disabled = currentIndex === 0;
 
   if (currentIndex === soalData.length - 1) {
@@ -614,9 +709,6 @@ function renderSoal() {
   renderProgressDots();
 }
 
-/* =========================================================
-   PROGRESS
-   ========================================================= */
 function updateTerjawab() {
   const terjawab = jawabanUser.filter(j => j !== null).length;
   labelTerjawabEl.textContent = `Terjawab: ${terjawab} / ${soalData.length}`;
@@ -633,9 +725,7 @@ function renderProgressDots() {
   });
 }
 
-/* =========================================================
-   NAVIGASI
-   ========================================================= */
+/* NAVIGASI */
 btnPrev.addEventListener('click', () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -650,9 +740,7 @@ btnNext.addEventListener('click', () => {
   }
 });
 
-/* =========================================================
-   SUBMIT & HITUNG NILAI
-   ========================================================= */
+/* SUBMIT */
 btnSubmit.addEventListener('click', () => {
   let benar = 0, salah = 0, kosong = 0;
 
@@ -664,7 +752,6 @@ btnSubmit.addEventListener('click', () => {
 
   const nilai = Math.round((benar / soalData.length) * 100);
 
-  // Sembunyikan area soal, tampilkan hasil
   document.getElementById('areaSoal').style.display = 'none';
   const areaHasil = document.getElementById('areaHasil');
   areaHasil.style.display = 'block';
@@ -675,7 +762,6 @@ btnSubmit.addEventListener('click', () => {
   document.getElementById('jumlahSalah').textContent = salah;
   document.getElementById('jumlahKosong').textContent = kosong;
 
-  // Predikat
   const predikatBox = document.getElementById('predikatBox');
   let predikat = '', kelas = '';
   if (nilai >= 75) { predikat = 'LULUS ✔'; kelas = 'lulus'; }
@@ -687,9 +773,7 @@ btnSubmit.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-/* =========================================================
-   UPLOAD GAMBAR SOAL
-   ========================================================= */
+/* UPLOAD GAMBAR */
 uploadSoal.addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -702,10 +786,8 @@ uploadSoal.addEventListener('change', (e) => {
   reader.readAsDataURL(file);
 });
 
-/* =========================================================
-   RESTART
-   ========================================================= */
-document.getElementById('btnRestart').addEventListener('click', () => {
+/* ULANGI UJIAN */
+function ulangiUjian() {
   jawabanUser = new Array(soalData.length).fill(null);
   currentIndex = 0;
 
@@ -714,12 +796,7 @@ document.getElementById('btnRestart').addEventListener('click', () => {
 
   renderSoal();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* =========================================================
-   INIT
-   ========================================================= */
-renderSoal();
+}
 </script>
 </body>
 </html>
